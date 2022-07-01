@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("./models/User.model");
 
+// creating the users info manually
 const users = [
   {
     first_name: "Gabe",
@@ -54,6 +55,7 @@ const users = [
   },
 ];
 
+// connecting to mongo db
 mongoose
   .connect("mongodb://localhost/backend")
   .then((response) => {
@@ -61,6 +63,7 @@ mongoose
   })
   .catch((err) => console.log("something went wrong connecting to database", err));
 
+// adding the users to the db
 User.create(users)
   .then((results) => {
     console.log("Saved the following users successfully", results);
